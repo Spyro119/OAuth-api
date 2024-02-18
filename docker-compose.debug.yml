@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    image: img-test-db
+    container_name: ctn-test-db
+    networks:
+      - testauth_network
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+       - vol-test-auth-db:/data/postgres-testdb
+    ports:
+      - "5431:5432"
+    expose: 
+      - 5431
+    restart: unless-stopped
+  
+
+    # fastAPI
+  test-api:
+    env_file: .env
+    networks:
+      - test_network
+    environment:
+      - POSTGRES_SERVER=postgres # db service name
+    image: img-test-api-v1
+    container_name: ctn-test-api-v1
+    command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; alembic upgrade head; uvicorn app.main:app --host 0.0.0.0'
+    # command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"]
+    # command: ["sh", "-c", 'while !</dev/tcp/postgres/5432; do sleep 1; done; alembic upgrade head;', "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn main:app --host 0.0.0.0"]
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8002:8000
+      - 5678:5678
+    expose:
+      - 8002
+      # - 443
+      # - 80
+    depends_on:
+      - postgres
+
+volumes:
+  vol-test-auth-db:
+    external: false
+
+  
+networks:
+  test_network:
+    name: network-test_default
+    external: false

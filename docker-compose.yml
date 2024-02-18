@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    image: img-test-db
+    container_name: ctn-test-db
+    networks:
+      - testauth_network
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+       - vol-test-auth-db:/data/postgres-testdb
+    ports:
+      - "5431:5432"
+    expose: 
+      - 5431
+    restart: unless-stopped
+  
+
+    # fastAPI
+  test-api:
+    env_file: .env 
+    # secrets:  # Need to point to Secrets from vault?
+    environment:
+      - POSTGRES_SERVER=postgres # db service name
+    image: img-testauth-api-v1
+    container_name: ctn-test-api-v1
+    networks:
+      - testauth_network
+    command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; alembic upgrade head; uvicorn app.main:app --host 0.0.0.0'
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:8000
+      # - 443:8080 # SSL
+      # - 80:8000
+    expose:
+      - 80
+      # - 443
+      # - 80
+    depends_on:
+      - postgres
+
+volumes:
+  vol-test-auth-db:
+    external: false
+
+networks:
+  testauth_network:
+    name: network-test_default
+    external: false
