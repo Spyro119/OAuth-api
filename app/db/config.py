@@ -10,7 +10,7 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 class Test_Settings:
-    PROJECT_NAME:str = "Segidoc OAuth"
+    PROJECT_NAME:str = "OAuth API"
     PROJECT_VERSION: str = "1.0.0"
 
     POSTGRES_USER : str = os.getenv("TEST_POSTGRES_USER")
@@ -23,7 +23,7 @@ class Test_Settings:
 test_settings = Test_Settings()
 
 class Settings:
-    PROJECT_NAME:str = "Segidoc OAuth"
+    PROJECT_NAME:str = "OAuth API"
     PROJECT_VERSION: str = "1.0.0"
 
     POSTGRES_USER : str = os.getenv("POSTGRES_USER")
