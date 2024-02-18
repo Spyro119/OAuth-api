@@ -18,8 +18,8 @@ from app.utils.jwtHandler import JWTBearer
 allow_create_resource = JWTBearer(["Admin"]) 
 
 admin_router = APIRouter(
-                prefix='/api/v1/admin/',
-                tags = ['/api/v1/admin/'],
+                prefix='/api/v1/admin',
+                tags = ['/api/v1/admin'],
                 dependencies=[Depends(allow_create_resource)],
             )
 

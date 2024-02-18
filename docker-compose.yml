@@ -18,9 +18,9 @@ services:
     volumes:
        - vol-test-auth-db:/data/postgres-testdb
     ports:
-      - "5431:5432"
+      - "5433:5432"
     expose: 
-      - 5431
+      - 5433
     restart: unless-stopped
   
 

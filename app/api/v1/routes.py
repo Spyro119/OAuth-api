@@ -16,8 +16,8 @@ from app.utils.passwordUtils import get_hashed_password, update_password_expired
 from app.utils.jwtHandler import  create_access_token, create_refresh_token, user_has_permission, JWTBearer, refresh_token
 
 router = APIRouter(
-        prefix='/api/v1/',
-        tags = ['/api/v1/'],
+        prefix='/api/v1',
+        tags = ['/api/v1'],
     )
 
 jwtBearerScheme = JWTBearer()
