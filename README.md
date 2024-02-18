@@ -105,7 +105,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 1. Clone le repo
    ```sh
-   git clone https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/
+   git clone https://github.com/Spyro119/OAuth-api/
    ```
 2. Installer les dépendances de l'environnement avec pipenv
     ```sh
@@ -161,7 +161,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Intégrer l'unit testing pour assurer le bon fonctionnement de l'API. (Partiellement fait).
 - [ ] Documenter le projet.
 
-See the [open issues](https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/Spyro119/OAuth-api/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -183,7 +183,7 @@ See the [open issues](https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/issue
 <!-- Versions -->
 ## Versions
 
-* [1.0.0](https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/tags)
+* [1.0.0](https://github.com/Spyro119/OAuth-api/tags)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -231,13 +231,13 @@ Project Link: [https://github.com/Spyro119/OAuth-apirepo_name](https://github.co
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 <!-- GITHUB URLS -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/VIP.svg?style=for-the-badge
-[contributors-url]: https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/graphs/contributors
+[contributors-url]: https://github.com/Spyro119/OAuth-api/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/VIP.svg?style=for-the-badge
-[forks-url]: https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/network/members
+[forks-url]: https://github.com/Spyro119/OAuth-api/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/VIP.svg?style=for-the-badge
-[stars-url]: https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/stargazers
+[stars-url]: https://github.com/Spyro119/OAuth-api/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/VIP.svg?style=for-the-badge
-[issues-url]: https://github.com/Spyro119/OAuth-apiSegidocOAuthAPI/issues
+[issues-url]: https://github.com/Spyro119/OAuth-api/issues
 
 <!-- FRAMEWORK AND LIBRARY URLS -->
 [Python-shield]: https://img.shields.io/pypi/pyversions/FastAPI?logo=python
