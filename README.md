@@ -155,7 +155,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap
 
 - [x] Initialiser le projet.
-- [x] Créer la DB `SegidocAuth`.
+- [x] Créer la DB.
 - [x] Définir les endpoints.
 - [x] Intégrer un mail service.
 - [ ] Intégrer l'unit testing pour assurer le bon fonctionnement de l'API. (Partiellement fait).
