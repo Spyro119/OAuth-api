@@ -199,7 +199,7 @@ docker compose up -d --build
 <!-- CONTACT -->
 ## Contact
 
-Samuel Jubinville-Baril - [github](https://github.com/Spyro119) - jubinvilles@outlook.com
+Samuel Jubinville-Baril - [github](https://github.com/Spyro119) - samuel.jubinville@outlook.com
 
 Project Link: [https://github.com/Spyro119/OAuth-api](https://github.com/Spyro119/OAuth-api)
 
