@@ -17,9 +17,9 @@
   <h3 align="center">OAuth-api</h3>
 
   <p align="center">
-    Rest API for user management.
+    API pour gérer l'authentification des utilisateurs.
     <br />
-    <a href="#"><strong>Explore documentation »</strong></a>
+    <!-- <a href="#"><strong>Explorer la documentation »</strong></a> -->
     <br />
     <br />
     <a href="https://github.com/Spyro119/OAuth-api/issues">Report Bug</a>
@@ -30,29 +30,28 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
+<!-- TABLE DES MATIÈRES -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Table des matières</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#à-propos-du-projet">À propos du projet</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#fabriqué-avec">Fabriqué avec</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#Pour-commencer">Pour commencer</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#Pré-requis">Pré-requis</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#utilisation">Utilisation</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contribute">Contribute</a></li>
+    <li><a href="#contribuer">Contribuer</a></li>
     <li><a href="#versions">Versions</a></li>
-    <li><a href="#publis">Publis</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#publier">Publier</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#ressources">Ressources</a></li>
   </ol>
@@ -60,14 +59,13 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About the project
+<!-- À PROPOS DU PROJET -->
+## À propos du projet
 
-[![Product Name Screen Shot][product-screenshot]](docs/screenshot_2.png)
-
+[![Product Name Screen Shot][product-screenshot]](https://example.com) <!-- TODO -->
 
 <!-- API de gestion d'utilisateurs, groupes, permissions et tokens. -->
-Simple Rest API to manage users account, authentification and authorizations.
+API pour gérer l'authentification ainsi que les authorisations des utilisateurs.
 
 <!-- There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -81,8 +79,8 @@ Of course, no one template will serve all projects since your needs may be diffe
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<!-- BUILT WITH -->
-### Built with
+<!-- FABRIQUÉ AVEC -->
+### Fabriqué avec
 
 * [![Python-shield]][Python-url]
 * [![FastAPI-shield]][FastAPI-url]
@@ -91,28 +89,31 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 
 
-<!-- GETTING STARTED -->
-## Getting started
+<!-- POUR COMMENCER -->
+## Pour commencer
 
-### Prerequisites
+### Pré-requis
 
 - python 3.11+
 - pipenv
+    <!-- ```sh 
+    pip install pipenv 
+    ``` -->
 - postgreSQL
 - docker
   
 
 ### Installation
 
-1. Clone the repo
+1. Clone le repo
    ```sh
    git clone https://github.com/Spyro119/OAuth-api/
    ```
-2. Install dependencies with pipenv
+2. Installer les dépendances de l'environnement avec pipenv
     ```sh
     python -m pipenv install
     ```
-3. rename ``.env.template`` file for ``.env`` and update values:
+3. Renommer le fichier ``.env.template`` pour ``.env`` et changer les valeurs :
     ```sh
     POSTGRES_USER=<username>
     POSTGRES_PASSWORD=<password>
@@ -126,22 +127,27 @@ Of course, no one template will serve all projects since your needs may be diffe
     PGDATA=<Docker Data path>
     PG_CONTAINER_NAME=<Docker db container name>
     ```
-4. Run the app 
+<!-- 4. alembic init alembic -->
+4. Exécuter l'application
     ```sh
     python -m pipenv shell # Ouvre une nouvelle instance de terminal dans l'environnement du projet.
     uvicorn app.main:app --reload 
     ```
 
-5. Log in as admin and create your new admin account.
-    - Credentials are - username: ``admin`` password: ``password123!``.
-    - IMPORTANT: It is recommended to delete this account after creating your own admin account.
+5. Créer un nouvel admin et supprimé l'admin généré par alembic.
+    - pour se connecter, le nom d'utilisateur est ``admin`` et le mot de passe est ``password123!``.
+    - IMPORTANT: veuillez supprimer ce compte après avoir créer un premier compte admin.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- USAGE -->
-## Usage
+<!-- UTILISATION -->
+## Utilisation
+
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,11 +156,12 @@ Of course, no one template will serve all projects since your needs may be diffe
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Project initialisation.
-- [x] Database initialised.
-- [x] Endpoints defined.
-- [ ] Unit testing integration. (Partially done).
-- [ ] Document the project.
+- [x] Initialiser le projet.
+- [x] Créer la DB.
+- [x] Définir les endpoints.
+- [x] Intégrer un mail service.
+- [ ] Intégrer l'unit testing pour assurer le bon fonctionnement de l'API. (Partiellement fait).
+- [ ] Documenter le projet.
 
 See the [open issues](https://github.com/Spyro119/OAuth-api/issues) for a full list of proposed features (and known issues).
 
@@ -162,14 +169,14 @@ See the [open issues](https://github.com/Spyro119/OAuth-api/issues) for a full l
 
 
 
-<!-- CONTRIBUTE -->
-## Contribute
+<!-- CONTRIBUER -->
+## Contribuer
 
-1. Clone the repo `git clone `
-2. Create a new "Feature" branch (`git checkout -b feature/{FeatureName}`)
-3. Commit changes (`git commit -m 'Problème x Résolu'`)
-4. Push to your own branch (`git push origin feature/{FeatureName}`)
-5. Create a Pull Request 
+1. Cloner le repo `git clone `
+2. Créer une nouvelle branche "Feature" (`git checkout -b feature/{FeatureName}`)
+3. Commit les Changement (`git commit -m 'Problème x Résolu'`)
+4. Push à la branche (`git push origin feature/{FeatureName}`)
+5. Ouvrir une Pull Request 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,10 +191,10 @@ See the [open issues](https://github.com/Spyro119/OAuth-api/issues) for a full l
 
 
 
-<!-- PUBLISH -->
-## Publish
+<!-- PUBLIER -->
+## Publier
 
-To host the API, simply run it under docker: 
+build le projet: 
 ```sh
 docker compose up -d --build 
 ```
@@ -237,10 +244,6 @@ Project Link: [https://github.com/Spyro119/OAuth-apirepo_name](https://github.co
 [license-url]: https://github.com/Spyro119/OAuth-api/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/samuel-jubinville-baril-bbb5601a4/
-[product-name]: Oauth-api
-[product-screenshot]: docs/screenshot_2.png
-[Product-name-screenshot]: Oauth-api
-
 
 <!-- FRAMEWORK AND LIBRARY URLS -->
 [Python-shield]: https://img.shields.io/pypi/pyversions/FastAPI?logo=python
