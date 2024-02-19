@@ -203,7 +203,7 @@ Samuel Jubinville-Baril - [github](https://github.com/Spyro119) - jubinvilles@ou
 
 <!-- Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com -->
 
-Project Link: [https://github.com/Spyro119/OAuth-apirepo_name](https://github.com/Spyro119/OAuth-api)
+Project Link: [https://github.com/Spyro119/OAuth-api](https://github.com/Spyro119/OAuth-api)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
