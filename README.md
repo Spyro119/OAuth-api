@@ -178,7 +178,7 @@ See the [open issues](https://github.com/Spyro119/OAuth-api/issues) for a full l
 <!-- Versions -->
 ## Versions
 
-* [1.0.0](https://github.com/Spyro119/OAuth-api/tags)
+* [1.0.0](https://github.com/Spyro119/OAuth-api/releases/tag/v1.0.0)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,8 +200,6 @@ docker compose up -d --build
 ## Contact
 
 Samuel Jubinville-Baril - [github](https://github.com/Spyro119) - jubinvilles@outlook.com
-
-<!-- Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com -->
 
 Project Link: [https://github.com/Spyro119/OAuth-api](https://github.com/Spyro119/OAuth-api)
 
