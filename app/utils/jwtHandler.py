@@ -13,7 +13,8 @@ from app.exceptions import UnauthorizedException, CredentialsException
 from app.schemas.userSchemas import UserSchema
 from app.models.User import User
 from app.models.jwtToken import Token
-
+from fastapi import Request, HTTPException
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30  # 30 minutes
@@ -22,8 +23,6 @@ REFRESH_TOKEN_EXPIRE_MINUTES = 60 # 60 minutes
 JWT_SECRET_KEY = os.environ['JWT_SECRET_KEY']   # should be kept secret
 JWT_REFRESH_SECRET_KEY = os.environ['JWT_REFRESH_SECRET_KEY']    # should be kept secret
 ALGORITHM = "HS256"
-from fastapi import Request, HTTPException
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 class JWTBearer(HTTPBearer):
     def __init__(self, auto_error: bool = True, allowed_roles: list[str] = None,  allowed_permissions: list[str] = None):
@@ -32,36 +31,32 @@ class JWTBearer(HTTPBearer):
         self.allowed_permissions = allowed_permissions
 
 
-    async def __call__(self, request: Request, db: Session = Depends(get_db)):
+    async def __call__(self, request: Request, db: Session = Depends(get_db)) -> str:
         credentials: HTTPAuthorizationCredentials = await super(JWTBearer, self).__call__(request)
         if credentials:
             self.delete_expired_tokens(db)
             if not credentials.scheme == "Bearer":
-                # raise HTTPException(status_code=403, detail="Invalid authentication scheme.")
                 raise HTTPException(status_code=403, detail="Jeton d'authentification invalide.")
             
             if not self.verify_jwt(credentials.credentials):
-                # raise HTTPException(status_code=403, detail="Invalid token or expired token.")
                 raise HTTPException(status_code=403, detail="Jeton d'authentification expiré ou invalide.")
-            # current_user = get_current_user(credentials.credentials)
+            
             username : str = decode_token(credentials.credentials)
             if username is None:
                 raise UnauthorizedException()
+            
             current_user: UserSchema = db.query(User).filter(User.username == username).first()
             if current_user is None:
                 raise UnauthorizedException()
             
             if self.allowed_permissions is not None and not user_has_permission(current_user=current_user, permission_codes=self.allowed_permissions):
-                # raise HTTPException(status_code=403, detail="Operation not permitted")
                 raise HTTPException(status_code=403, detail="Opération interdite.")
             
             elif self.allowed_roles is not None and not self.has_role(current_user):
-                # raise HTTPException(status_code=403, detail="Operation not permitted")
                 raise HTTPException(status_code=403, detail="Opération interdite.")
                 
             return credentials.credentials
         else:
-            # raise HTTPException(status_code=403, detail="Invalid authorization code.")
             raise HTTPException(status_code=403, detail="Code d'authorisation invalide.")
         
 
@@ -103,8 +98,7 @@ class JWTBearer(HTTPBearer):
                 return False
         return True
 
-# time now => 1693491939.080792 
-#  expires at => 1693493739
+
 def create_access_token(subject: Union[str, Any], expires_delta: int = None) -> str:
     """
     Créer un token d'accès pour l'utilisateur.
@@ -187,11 +181,6 @@ def refresh_token(token: jwtToken):
     expires = jwt.decode(jwt_token, JWT_SECRET_KEY, algorithms=[ALGORITHM]).get("exp")
     new_db_token = Token(user_id = token.user_id, access_token = jwt_token, refresh_token = jwt_refresh_token, expires_in = datetime.utcnow() + timedelta(minutes=expires))
     return new_db_token
-
-
-    # @AuthJWT.load_config
-    # def get_config():
-    #     return Settings()
 
 
 def user_has_permission(current_user: UserSchema, group_names: list[str], permission_codes : list[str]) -> bool | UnauthorizedException:

@@ -15,7 +15,7 @@ from app.db.session import get_db
 from app.exceptions import EntityNotFoundException
 from app.utils.jwtHandler import JWTBearer
 
-allow_create_resource = JWTBearer(["Admin"]) 
+allow_create_resource = JWTBearer(allowed_roles=["Admin"]) 
 
 admin_router = APIRouter(
                 prefix='/api/v1/admin',

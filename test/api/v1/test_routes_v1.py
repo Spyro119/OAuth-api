@@ -62,7 +62,7 @@ def test_get_profile(client: TestClient, db_session: Session, normal_user_token_
     assert profile_response.json()["username"] == "test_User2"
 
 
-def test_refresh_token(client, db_session):
+def test_refresh_token(client: TestClient, db_session: Session):
     user_created = get_user_by_email("Test_user3@Testing.com", db_session)
     login_response = client.post(f"{api_version}/login", data={
         "username": user_created.username, 
@@ -76,4 +76,3 @@ def test_refresh_token(client, db_session):
     assert refresh_token_response.json()["token"]["access_token"] != None
     assert refresh_token_response.json()["token"]["refresh_token"] != None
     assert refresh_token_response.json()["token"]["expire"] != None
-    return

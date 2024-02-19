@@ -11,7 +11,7 @@ from app.schemas.jwtSchemas import jwtTokenSchema
 from app.models.User import User
 from app.models.jwtToken import Token
 
-from app.utils.userUtils import get_current_user, create_user
+from app.utils.userUtils import get_current_user
 from app.utils.passwordUtils import get_hashed_password, update_password_expired, verify_password, create_reset_link
 from app.utils.jwtHandler import  create_access_token, create_refresh_token, user_has_permission, JWTBearer, refresh_token
 
@@ -70,18 +70,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db : Session =
             "password_expired": db_user.password_expired}
 
 
-@router.post("/logout", description="Détruit le jwt Token de l'utilisateur et termine sa session", status_code=204)
-async def logout(token: Annotated[str, Depends(jwtBearerScheme)], db: Session = Depends(get_db)):
-    current_user = get_current_user(token, db)
-    if not current_user:
-        raise CredentialsException() 
-    db_token = db.query(Token).where(Token.access_token == token).one_or_none()
-    if not db_token:
-        raise CredentialsException()
-    db.delete(db_token)
-    db.commit()
-
-
 @router.post("/refresh-token", description="Rafraichis le token d'authentification", response_model=jwtTokenSchema, status_code=201)
 async def refresh_user_token(ref_token : str, db : Session = Depends(get_db)):
     db_token = db.query(Token).where(Token.refresh_token == ref_token).first()
@@ -99,6 +87,18 @@ async def refresh_user_token(ref_token : str, db : Session = Depends(get_db)):
     db.refresh(new_db_token)
     return {"token": new_db_token,
             "password_expired": current_user.password_expired}
+
+
+@router.post("/logout", description="Détruit le jwt Token de l'utilisateur et termine sa session", status_code=204)
+async def logout(token: Annotated[str, Depends(jwtBearerScheme)], db: Session = Depends(get_db)):
+    current_user = get_current_user(token, db)
+    if not current_user:
+        raise CredentialsException() 
+    db_token = db.query(Token).where(Token.access_token == token).one_or_none()
+    if not db_token:
+        raise CredentialsException()
+    db.delete(db_token)
+    db.commit()
 
 
 @router.put("/profile", description= "Met à jour le profil de l'utilisateur", status_code=202)
