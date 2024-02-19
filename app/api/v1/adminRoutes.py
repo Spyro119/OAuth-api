@@ -72,10 +72,12 @@ async def create_group(new_group: AdminCreateGroupSchema, db : Session = Depends
     db.add(db_group)
     db.commit()
     db.refresh(db_group)
+    print(new_group.user_ids)
     if new_group.user_ids is not None:
-        bulk_add_users_to_group(new_group.user_ids, db_group, db)
+        print(len(new_group.user_ids))
+        await bulk_add_users_to_group(new_group.user_ids, db_group, db)
     if new_group.permission_ids is not None:
-        bulk_add_permissions_to_group(new_group.permission_ids, db_group, db)
+        await bulk_add_permissions_to_group(new_group.permission_ids, db_group, db)
     return db_group
 
 

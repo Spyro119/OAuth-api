@@ -75,14 +75,16 @@ async def logout(token: Annotated[str, Depends(jwtBearerScheme)], db: Session = 
     current_user = get_current_user(token, db)
     if not current_user:
         raise CredentialsException() 
-    db_token = db.query(Token).where(Token.access_token == token).one()
+    db_token = db.query(Token).where(Token.access_token == token).one_or_none()
+    if not db_token:
+        raise CredentialsException()
     db.delete(db_token)
     db.commit()
 
 
 @router.post("/refresh-token", description="Rafraichis le token d'authentification", response_model=jwtTokenSchema, status_code=201)
-async def refresh_user_token(token: str, db : Session = Depends(get_db)):
-    db_token = db.query(Token).where(Token.refresh_token == token).first()
+async def refresh_user_token(ref_token : str, db : Session = Depends(get_db)):
+    db_token = db.query(Token).where(Token.refresh_token == ref_token).first()
     current_user = db.query(User).where(User.id == db_token.user_id).one_or_none()
     if not current_user:
         raise CredentialsException
