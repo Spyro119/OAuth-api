@@ -223,13 +223,13 @@ Project Link: [https://github.com/Spyro119/OAuth-api](https://github.com/Spyro11
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 <!-- GITHUB URLS -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/VIP.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Spyro119/OAuth-api.svg?style=for-the-badge
 [contributors-url]: https://github.com/Spyro119/OAuth-api/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/VIP.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Spyro119/OAuth-api.svg?style=for-the-badge
 [forks-url]: https://github.com/Spyro119/OAuth-api/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/VIP.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Spyro119/OAuth-api.svg?style=for-the-badge
 [stars-url]: https://github.com/Spyro119/OAuth-api/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/VIP.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Spyro119/OAuth-api.svg?style=for-the-badge
 [issues-url]: https://github.com/Spyro119/OAuth-api/issues
 [license-shield]: https://img.shields.io/github/license/Spyro119/OAuth-api.svg?style=for-the-badge
 [license-url]: https://github.com/Spyro119/OAuth-api/blob/master/LICENSE.txt
